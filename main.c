@@ -35,6 +35,17 @@ void Reverse() { //using iteration
   head = prev;
 }
 
+void reverse(struct Node *temp) { //using recursion
+  if(temp->next==NULL) {
+    head = temp;
+    return;
+  }
+  reverse(temp->next);
+  struct Node* q = temp->next;
+  q->next = temp;
+  temp->next = NULL;
+}
+
 void Print() { //using iteration
   struct Node* temp = head;
   while(temp != NULL) {
@@ -54,17 +65,17 @@ void print(struct Node* temp) { //using recursion
 }
 
 int main(void) {
-  int n,num;
-  printf("Enter no. of term: \n");
-  scanf("%d",&n);
-  for(int i=0;i<n;i++){
-    printf("Enter your Number: \n");
-    scanf("%d",&num);
-    Insert(num);
-    Print();
-    print(head);
-  }
-  Reverse();
+  Insert(1);
+  Insert(2);  
+  Insert(3);  
+  Insert(4);  
+  Insert(5);  
+  Insert(6);  
+  Insert(7);
+  Insert(8);      
   Print();
+  // Reverse();
+  reverse(head);
+  print(head);
   return 0;
 }
